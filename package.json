@@ -1,0 +1,36 @@
+{
+  "name": "foxanimation",
+  "version": "1.0.0",
+  "description": "Just an webGL app of an animated fox.",
+  "main": "index.js",
+  "type": "module",
+  
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "deploy": "vercel --prod"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/showrav-ansary/FoxAnimation.git"
+  },
+  "keywords": [
+    "webgl",
+    "threejs",
+    "3dmodel"
+  ],
+  "author": "A. A. Noman Ansary",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/showrav-ansary/FoxAnimation/issues"
+  },
+  "homepage": "https://github.com/showrav-ansary/FoxAnimation#readme",
+  "devDependencies": {
+    "vercel": "^28.18.5",
+    "vite": "^4.2.1"
+  },
+  "dependencies": {
+    "lil-gui": "^0.18.1",
+    "three": "^0.151.3"
+  }
+}
