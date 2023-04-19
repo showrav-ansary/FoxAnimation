@@ -4,14 +4,17 @@ import * as THREE from 'three';
 import Sizes from "./Utils/Sizes.js";
 import Time from "./Utils/Time.js";
 import Camera from './Camera.js';
+import Renderer from './Renderer.js';
+import World from './World/World.js';
+import Resources from './Utils/Resources.js';
+import sources from './sources.js';
 
 
 let instance = null;
 
-
-export default class FoxAnimation{
-    constructor(canvas){
-        if(instance)
+export default class FoxAnimation {
+    constructor(canvas) {
+        if (instance)
             return instance;
 
         instance = this;
@@ -23,12 +26,18 @@ export default class FoxAnimation{
         this.canvas = canvas;
 
         // Setup
+        this.resources = new Resources(sources);
         this.sizes = new Sizes();
         this.time = new Time();
         this.scene = new THREE.Scene();
         this.camera = new Camera();
+        this.renderer = new Renderer();
+        this.world = new World();
+        
 
-        this.sizes.on('resize', ()=>{
+        
+
+        this.sizes.on('resize', () => {
             this.resize()
         });
 
@@ -38,11 +47,13 @@ export default class FoxAnimation{
         });
     }
 
-    resize(){
+    resize() {
         this.camera.resize();
+        this.renderer.resize();
     }
 
-    update(){
+    update() {
         this.camera.update();
+        this.renderer.update();
     }
 }
