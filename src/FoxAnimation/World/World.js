@@ -3,6 +3,7 @@
 import * as THREE from 'three';
 import FoxAnimation from '../FoxAnimation.js';
 import Environment from './Environment.js';
+import Floor from './Floor.js';
 
 export default class World {
     constructor() {
@@ -10,22 +11,16 @@ export default class World {
         this.scene = this.foxAnimation.scene;
         this.resources = this.foxAnimation.resources;
 
-        // Test mesh
-        const testMesh = new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshStandardMaterial({
-                wireframe: false
-            })
-        );
-
-        this.scene.add(testMesh);
+        
 
         this.resources.on('ready', () => {
-            console.log('resources are ready');
+            this.floor = new Floor();
+            this.environment = new Environment();
+            
         });
 
         // Setup
-        this.environment = new Environment();
+       
     }
 
 
