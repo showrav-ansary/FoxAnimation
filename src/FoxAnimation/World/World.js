@@ -11,7 +11,6 @@ export default class World {
         this.scene = this.foxAnimation.scene;
         this.resources = this.foxAnimation.resources;
 
-        
 
         this.resources.on('ready', () => {
             this.floor = new Floor();
