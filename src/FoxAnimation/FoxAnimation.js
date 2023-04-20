@@ -54,6 +54,7 @@ export default class FoxAnimation {
 
     update() {
         this.camera.update();
+        this.world.update();
         this.renderer.update();
     }
 }
