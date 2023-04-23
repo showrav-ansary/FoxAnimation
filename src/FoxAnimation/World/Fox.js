@@ -11,15 +11,9 @@ export default class Fox{
         this.resources = this.foxAnimation.resources;
         this.time = this.foxAnimation.time;
         this.debug = this.foxAnimation.debug;
-
+        
         if(this.debug.active){
-            const debugObjects = {
-                idle: () => { this.animation.play['idle']},
-                walking: () => { this.animation.play['walking']},
-                running: () => { this.animation.play['running']}
-            }
-            this.debug.UI.addFolder('Fox');
-
+            this.debugFolder = this.debug.UI.addFolder('Fox');
         }
 
         this.resource = this.resources.items.foxModel;
@@ -60,6 +54,17 @@ export default class Fox{
             newAction.crossFadeFrom(oldAction, 1);
 
             this.animation.actions.currentAction = newAction;
+        }
+        
+        if(this.debug.active){
+            const debugObjects = {
+                idle: () => { this.animation.play('idle')},
+                walking: () => { this.animation.play('walking')},
+                running: () => { this.animation.play('running')}
+            }
+            this.debugFolder.add(debugObjects, 'idle').name('Idle');
+            this.debugFolder.add(debugObjects, 'walking').name('Walk');
+            this.debugFolder.add(debugObjects, 'running').name('Run');
         }
     }
     update(){
