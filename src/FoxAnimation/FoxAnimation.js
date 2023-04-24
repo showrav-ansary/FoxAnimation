@@ -35,9 +35,9 @@ export default class FoxAnimation {
         this.camera = new Camera();
         this.renderer = new Renderer();
         this.world = new World();
-        
 
-        
+
+
 
         this.sizes.on('resize', () => {
             this.resize()
@@ -58,5 +58,28 @@ export default class FoxAnimation {
         this.camera.update();
         this.world.update();
         this.renderer.update();
+    }
+    destroy() {
+        this.sizes.off('resize');
+        this.sizes.off('tick');
+
+        this.scene.traverse((child) => {
+            if(child instanceof THREE.Mesh){
+                child.geometry.dispose();
+                for(const key in child.material){
+                    const value = child.material[key];
+
+                    if(value && typeof value.dispose === 'function'){
+                        value.dispose();
+                    }
+                }
+            }
+        });
+
+        this.camera.controls.dispose();
+        this.renderer.instance.dispose();
+        if(this.debug.active){
+            this.debug.UI.destroy();
+        }
     }
 }
