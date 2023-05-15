@@ -40,7 +40,28 @@ export default class Environment {
             this.debugFolder.sunLight
                 .addColor(this.sunLight, 'color')
                 .name('Sunlight Color')
+
+            this.debugFolder.sunLight.position = this.debugFolder.sunLight.addFolder('Positions');
+            this.debugFolder.sunLight.position
+                .add(this.sunLight.position,'x')
+                .min(-5)
+                .max(5)
+                .step(0.001)
+                .name('X')
             
+            this.debugFolder.sunLight.position
+                .add(this.sunLight.position,'y')
+                .min(-5)
+                .max(5)
+                .step(0.001)
+                .name('Y')
+            
+            this.debugFolder.sunLight.position
+                .add(this.sunLight.position,'z')
+                .min(-5)
+                .max(5)
+                .step(0.001)
+                .name('Z')
             
         }
     }
@@ -65,12 +86,14 @@ export default class Environment {
         this.environmentMap.updateMaterial();
 
         if (this.debug.active) {
-            this.debugFolder
+            this.debugFolder.textureSettings = this.debugFolder.addFolder('Textures');
+
+            this.debugFolder.textureSettings
                 .add(this.environmentMap, 'intensity')
                 .min(0)
                 .max(4)
                 .step(0.001)
-                .name('Intensity')
+                .name('Environment Map Intensity')
                 .onChange(this.environmentMap.updateMaterial)
         }
     }
