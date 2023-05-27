@@ -1,2 +1,2 @@
 # FoxAnimation
-A basic webGL project of an animated fox.
+A basic threejs project of an animated fox in OOP style.
