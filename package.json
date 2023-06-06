@@ -27,7 +27,7 @@
   "homepage": "https://github.com/showrav-ansary/FoxAnimation#readme",
   "devDependencies": {
     "vercel": "^28.18.5",
-    "vite": "^4.2.1"
+    "vite": "^4.3.9"
   },
   "dependencies": {
     "lil-gui": "^0.18.1",
